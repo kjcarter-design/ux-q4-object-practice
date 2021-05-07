@@ -48,6 +48,7 @@ function printTheirName(person) {
   /* 
   Your code goes below
   */
+  console.log(`${person.firstName} ${person.lastName}`);
 }
 printTheirName(person);
 
@@ -66,6 +67,7 @@ function printTheirHobbies(person) {
   /* 
   Your code goes below
   */
+  for (let hobby of person.hobbies) console.log(hobby);
 }
 printTheirHobbies(person);
 
@@ -92,6 +94,9 @@ function printTheirShippingAddress(person) {
   /* 
   Your code goes below
   */
+  console.log(`${person.firstName} ${person.lastName}
+${person.address.number} ${person.address.street} 
+${`${person.address.city}, ${person.address.state} ${person.address.zipcode}`}`);
 }
 printTheirShippingAddress(person);
 
@@ -111,6 +116,8 @@ function addPhoneNumber(person) {
   /* 
   Your code goes below
   */
+  person.phone = "(123-456-7890)";
+  console.log(person);
 }
 addPhoneNumber(person);
 
@@ -146,9 +153,22 @@ function createPerson() {
   /* 
   Your code goes below
   */
+  let person2 = {
+    firstName: "Riley",
+    lastName: "Freeman",
+    hobbies: ["Stacking paper", "Chasing the bag", "Fundraising"],
+    address: {
+      number: 555,
+      street: "Timid Deer Lane",
+      city: "Woodcrest",
+      state: "Maryland",
+      zipcode: "21244",
+    },
+  };
+  return person2;
 }
-console.log(createPerson());
 
+console.log(createPerson());
 /*
 ---------------------------------------------------------------------------
 Objects - Part Two
@@ -237,9 +257,9 @@ Do NOT just hardcode people[1], people[2], etc...
 console.log("6) - Print everyone's names");
 
 function printEveryonesNames(people) {
-  /* 
-  Your code goes below
-  */
+  for (let i = 0; i < people.length; i++) {
+    console.log(`${people[i].firstName} ${people[i].lastName}`);
+  }
 }
 printEveryonesNames(people);
 
@@ -260,9 +280,11 @@ to make this easier!
 console.log("7) - Print hobbies > 40 years old");
 
 function printHobbiesOver40(people) {
-  /* 
-  Your code goes below
-  */
+  for (let i = 0; i < people.length; i++) {
+    if (people[i].age > 40) {
+      console.log(people[i].hobbies);
+    }
+  }
 }
 printHobbiesOver40(people);
 
@@ -285,9 +307,11 @@ There are several array functions which would apply.
 console.log("8) - Print names of whoever likes gardening");
 
 function printNamesOfGardeners(people) {
-  /* 
-  Your code goes below
-  */
+  for (let i = 0; i < people.length; i++) {
+    if (people[i].hobbies.includes("Gardening")) {
+      console.log(`${people[i].firstName} ${people[i].lastName}`);
+    }
+  }
 }
 printNamesOfGardeners(people);
 
@@ -303,9 +327,8 @@ Then log the people array to the console.
 console.log("9) - Add Person");
 
 function addPerson(people) {
-  /* 
-  Your code goes below
-  */
+  people.push(createPerson());
+  console.log(people);
 }
 addPerson(people);
 
@@ -333,3 +356,22 @@ At least one property must be another object. (like the address property in the 
 When you are done, log your dog object to the console.
 */
 console.log("BONUS - 10) - Create a dog object");
+
+let pet = {
+  name: "Ava",
+  breed: "English BullDog",
+  age: 14,
+  birthplace: "Indianapolis, IN",
+  currentHome: "Bradenton, FL",
+  colorOfFur: "brown and white",
+  tempermant: "calm",
+  owner: {
+    name: "Monika",
+    age: 46,
+    address: "Florida, USA",
+    phone: "(317,555,5555)",
+  },
+  hobbies: ["laying down, barking into the void, chasing balls"],
+  likesLongWalks: false,
+};
+console.log(pet);
